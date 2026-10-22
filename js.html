@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Ayman | Portfolio</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-dark: #070a13;
+            --bg-card: #0d1527;
+            --navy-secondary: #1c2541;
+            
+            --gold-primary: #d4af37;
+            --gold-light: #f3e5ab;
+            --gold-dark: #aa7c11;
+            --gold-gradient: linear-gradient(135deg, #f3e5ab 0%, #d4af37 50%, #aa7c11 100%);
+            
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --glass-bg: rgba(13, 21, 39, 0.7);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+        }
+
+        /* --- Custom Scrollbar --- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold-dark);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-primary);
+        }
+
+        /* --- Header / Navbar --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(7, 10, 19, 0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            text-decoration: none;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .logo span {
+            color: var(--gold-primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--gold-primary);
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 140px 8% 60px;
+            position: relative;
+            background: radial-gradient(circle at 80% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 20% 80%, rgba(28, 37, 65, 0.4) 0%, transparent 50%);
+        }
+
+        .hero-text {
+            max-width: 600px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-text h1 span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .hero-text p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 35px;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: var(--gold-gradient);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(212, 175, 55, 0.5);
+        }
+
+        .btn-secondary {
+            border: 1px solid var(--gold-primary);
+            color: var(--gold-primary);
+            background: transparent;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(212, 175, 55, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* --- Profile Image Area --- */
+        .hero-img-box {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .img-glow {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: var(--gold-gradient);
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.25;
+            animation: pulse 4s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.2; transform: scale(0.95); }
+            100% { opacity: 0.35; transform: scale(1.05); }
+        }
+
+        .profile-img-wrapper {
+            position: relative;
+            width: 320px;
+            height: 320px;
+            border-radius: 50%;
+            padding: 6px;
+            background: var(--gold-gradient);
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.3);
+            overflow: hidden;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            transform: scale(1.2);
+            border-radius: 50%;
+            display: block;
+        }
+
+        /* --- Sections Common --- */
+        section {
+            padding: 80px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+        }
+
+        .section-title h2 span {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+            margin-top: 8px;
+        }
+
+        /* --- About Section --- */
+        .about-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .about-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 12px;
+            transition: var(--transition);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--gold-primary);
+        }
+
+        .about-card i {
+            font-size: 2rem;
+            color: var(--gold-primary);
+            margin-bottom: 15px;
+        }
+
+        .about-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .about-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- Skills Section --- */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .skill-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.1);
+        }
+
+        .skill-card i {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+            margin-bottom: 10px;
+        }
+
+        .skill-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* --- Projects Section --- */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 30px;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold-primary);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15);
+        }
+
+        .project-tag {
+            font-size: 0.8rem;
+            color: var(--gold-primary);
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .project-link {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
+        }
+
+        .project-link:hover {
+            color: var(--gold-primary);
+        }
+
+        /* --- Contact Section --- */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .contact-card {
+            background: var(--bg-card);
+            border: 1px solid var(--glass-border);
+            padding: 25px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            text-decoration: none;
+            color: var(--text-main);
+            transition: var(--transition);
+        }
+
+        .contact-card:hover {
+            border-color: var(--gold-primary);
+            transform: translateY(-3px);
+            background: var(--navy-secondary);
+        }
+
+        .contact-card i {
+            font-size: 1.8rem;
+            color: var(--gold-primary);
+        }
+
+        .contact-card h4 {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .contact-card p {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: #04060c;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-btns {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <a href="#" class="logo">ABDULLAH<span>.</span></a>
+        <ul class="nav-links">
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <span class="badge">Front-End Developer</span>
+            <h1>Hi, I'm <span>Abdullah Ayman</span></h1>
+            <h2>Crafting Interactive & Modern Web Designs</h2>
+            <p>Passionate about building clean HTML & CSS web solutions. Experienced in developing gym interfaces, pricing tiers, and equipment product pages, with aspirations to expand into iOS & Android mobile development.</p>
+            <div class="hero-btns">
+                <a href="#projects" class="btn btn-primary"><i class="fas fa-briefcase"></i> View Projects</a>
+                <a href="#contact" class="btn btn-secondary"><i class="fas fa-paper-plane"></i> Contact Me</a>
+            </div>
+        </div>
+
+        <div class="hero-img-box">
+            <div class="img-glow"></div>
+            <div class="profile-img-wrapper">
+                <img src="1000019194(1).jpg" alt="Abdullah Ayman" class="profile-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="section-title">
+            <h2>About <span>Me</span></h2>
+            <p>My journey, specialization, and future goals</p>
+        </div>
+        <div class="about-cards">
+            <div class="about-card">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Web Development</h3>
+                <p>Creating responsive, modern, and high-performance websites using HTML & CSS with attention to layout detail.</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-dumbbell"></i>
+                <h3>Fitness Projects</h3>
+                <p>Specialized experience building platforms for personal coaches, gym pricing systems, and equipment stores.</p>
+            </div>
+            <div class="about-card">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Mobile Development</h3>
+                <p>Moving into cross-platform mobile development (iOS & Android) with the aim of publishing my first App Store app.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <div class="section-title">
+            <h2>Technical <span>Skills</span></h2>
+            <p>Languages & tools I utilize</p>
+        </div>
+        <div class="skills-grid">
+            <div class="skill-card">
+                <i class="fab fa-html5"></i>
+                <h4>HTML5</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-css3-alt"></i>
+                <h4>CSS3</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-js"></i>
+                <h4>JavaScript</h4>
+            </div>
+            <div class="skill-card">
+                <i class="fab fa-github"></i>
+                <h4>Git & GitHub</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="section-title">
+            <h2>Featured <span>Projects</span></h2>
+            <p>Explore my recent web creations</p>
+        </div>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div>
+                    <div class="project-tag">Fitness Website</div>
+                    <h3 class="project-title">GYM ZOON</h3>
+                    <p class="project-desc">A modern fitness website layout for gym facilities, showcasing services, workout programs, and dynamic layouts.</p>
+                </div>
+                <a href="https://abdullah77c.github.io/GYN-ZOON/afrist%20project.GYM%20ZOON," target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Preview</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-tag">Sports E-Commerce</div>
+                    <h3 class="project-title">Astor Gym</h3>
+                    <p class="project-desc">An interactive showcase for gym equipment and clothing, with pricing cards and product detail views.</p>
+                </div>
+                <a href="https://abdullah77c.github.io/GYN-ZOON/afrist%20project.GYM%20ZOON," target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Preview</a>
+            </div>
+
+            <div class="project-card">
+                <div>
+                    <div class="project-tag">Personal Portfolio</div>
+                    <h3 class="project-title">Coach Mohamed Mossad</h3>
+                    <p class="project-desc">A customized personal trainer portfolio built to present fitness programs, client results, and subscription options.</p>
+                </div>
+                <a href="https://abdullah77c.github.io/PROTFROLIO-CAP-M-MOSSAD2/" target="_blank" class="project-link"><i class="fas fa-external-link-alt"></i> Live Preview</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="section-title">
+            <h2>Get In <span>Touch</span></h2>
+            <p>Connect with me for web development projects</p>
+        </div>
+        <div class="contact-grid">
+            <a href="mailto:ghsjcgjcf@gmil.com" class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email</h4>
+                    <p>ghsjcgjcf@gmil.com</p>
+                </div>
+            </a>
+            <a href="tel:01017088247" class="contact-card">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>Phone / WhatsApp</h4>
+                    <p>01017088247</p>
+                </div>
+            </a>
+            <a href="https://github.com/abdullah77c" target="_blank" class="contact-card">
+                <i class="fab fa-github"></i>
+                <div>
+                    <h4>GitHub</h4>
+                    <p>@abdullah77c</p>
+                </div>
+            </a>
+            <a href="https://www.linkedin.com/in/abdullah-ayman-639a16292" target="_blank" class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <div>
+                    <h4>LinkedIn</h4>
+                    <p>Abdullah Ayman</p>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Abdullah Ayman. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
